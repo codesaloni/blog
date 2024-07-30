@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}my blogs{% endblock %}
+{%block content%}
+<div class="container">
+    <div class="container" >
+        <div class="row1"  >
+          <div class="column" style="display: flex; gap: 30px; margin-top: 20px; margin-bottom: 30px;">
+            {% for cat in cats %}
+            <div class="card" >
+                <img src="/media/{{cat.images}}"  class="img-fluid" style="height: 200px; width: 400px;">
+                <h3>{{cat.title}}</h3>
+                <p>{{cat.description}}</p>
+              
+                    <a href="/category/{{cat.url}}" ><button type="button" class="btn btn-success" >view more</button></a>
+
+            </div>
+            {% endfor%}
+          </div>
+       
+        </div>
+        
+</div>
+<div class="container">
+   <div class="row">
+    <div class="col s12">
+        {%for p in posts %}
+        <div class="row">
+            <div class="col s12 m8">
+
+        {{p.content |truncatewords:50| safe}}
+        <div class="">
+           <a href="/blog/{{p.url}}" ><button type="button" class="btn btn-success">Read...</button></a>
+        </div>
+    </div>
+    <div class="col s12 m8">
+        <img src="/media/{{p.images}}" class="img-fluid; mb-2 mt-4 " style="height: 50%;">
+    </div>
+    </div>
+
+        {%endfor%}
+        
+    </div>
+   </div>
+  </div>
+{%endblock%}

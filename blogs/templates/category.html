@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}my blogs{% endblock %}
+{%block content%}
+<div class="container">
+    <h3>{{cat.title}}</h3>
+    <img src="/media/{{cat.images}}"  class="img-fluid" style="height: 450px; width: 100%; object-fit: cover;">
+</div>
+<div class="collection">
+    {% for p in posts %}
+   
+     <div class="row" >
+     <a href="/blog/{{p.url}}" class="collection-items" style="text-decoration: none; font-size: 20px; color: green;margin-top: 10px; margin-left: 50px;">{{p.title}}</a>
+     {% empty %}
+     <h3 style="text-align: center; margin-top: 20px;"> <b>NO Post In This Category</b></h3>
+    </div>
+     {%endfor%}
+  
+      </div>
+   
+
+{%endblock%}
